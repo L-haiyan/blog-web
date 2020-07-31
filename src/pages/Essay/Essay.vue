@@ -8,87 +8,8 @@
     <el-row :gutter="10" class="container">
       <!-- 左侧content -->
       <el-col :span="15" :offset="2" >
-        <div class="grid-content bg-purple content">
-          <!-- 标题 -->
-          <el-row class="container-title">
-            <el-col :span="24" class="bg">
-              <div class="container-title-top">全部文章</div>
-              <span class="container-title-total"><i class="el-icon-document"></i>文章:10篇</span>
-              <span class="container-title-ratings"><i class="el-icon-edit-outline"></i>评论:6条</span>
-              <span class="container-title-readings"><i class="el-icon-view"></i>阅读:12次</span>
-              <span class="container-title-categories"><i class="el-icon-menu"></i>分类:6种</span>
-            </el-col>
-          </el-row>
-          <!-- 文章列表 -->
-          <el-row>
-            <el-col :span="24">
-              <el-card class="essay bg">
-                <div class="essay-head">
-                  <!-- 文章名称 -->
-                  <div class="essay-head-title">浅时光</div>
-                  <!-- 文章介绍 -->
-                  <div class="essay-head-tips">
-                    <span class="tips-author"><i class="el-icon-user-solid"></i>haiyan</span>
-                    <span class="tips-time"><i class="el-icon-date"></i>2020-07-03</span>
-                    <span class="tips-category"><i class="el-icon-menu"></i>分类:日志</span>
-                  </div>
-                </div>
-                <!-- 文章内容 -->
-                <div class="essay-content">
-                  我们几乎每天都会使用百度或者google去互联网获取各种知识或资源，不知道细心的你有没有发现有时候从百度或者google跳转到我们真正要看的网页时会奇慢，为什么会这样呢？我们打开开发者工具看一眼.我们几乎每天都会使用百度或者google去互联网获取各种知识或资源，不知道细心的你有没有发现有时候从百度或者google跳转到我们真正要看的网页时会奇慢，为什么会这样呢？我们打开开发者工具看一眼...
-                  <div class="essay-content-btn">阅读全文<i class="el-icon-d-arrow-right"></i></div>
-                </div>
-              </el-card>
-            </el-col>
-          </el-row>  
-          <el-row>
-            <el-col :span="24">
-              <el-card class="essay bg">
-                <div class="essay-head">
-                  <!-- 文章名称 -->
-                  <div class="essay-head-title">浅时光</div>
-                  <!-- 文章介绍 -->
-                  <div class="essay-head-tips">
-                    <span class="tips-author"><i class="el-icon-user-solid"></i>haiyan</span>
-                    <span class="tips-time"><i class="el-icon-date"></i>2020-07-03</span>
-                    <span class="tips-category"><i class="el-icon-menu"></i>分类:日志</span>
-                  </div>
-                </div>
-                <!-- 文章内容 -->
-                <div class="essay-content">
-                  我们几乎每天都会使用百度或者google去互联网获取各种知识或资源，不知道细心的你有没有发现有时候从百度或者google跳转到我们真正要看的网页时会奇慢，为什么会这样呢？我们打开开发者工具看一眼.我们几乎每天都会使用百度或者google去互联网获取各种知识或资源，不知道细心的你有没有发现有时候从百度或者google跳转到我们真正要看的网页时会奇慢，为什么会这样呢？我们打开开发者工具看一眼...
-                  <div class="essay-content-btn">阅读全文<i class="el-icon-d-arrow-right"></i></div>
-                </div>
-              </el-card>
-            </el-col>
-          </el-row>   
-          <el-row>
-            <el-col :span="24">
-              <el-card class="essay bg">
-                <div class="essay-head">
-                  <!-- 文章名称 -->
-                  <div class="essay-head-title">浅时光</div>
-                  <!-- 文章介绍 -->
-                  <div class="essay-head-tips">
-                    <span class="tips-author"><i class="el-icon-user-solid"></i>haiyan</span>
-                    <span class="tips-time"><i class="el-icon-date"></i>2020-07-03</span>
-                    <span class="tips-category"><i class="el-icon-menu"></i>分类:日志</span>
-                  </div>
-                </div>
-                <!-- 文章内容 -->
-                <div class="essay-content">
-                  我们几乎每天都会使用百度或者google去互联网获取各种知识或资源，不知道细心的你有没有发现有时候从百度或者google跳转到我们真正要看的网页时会奇慢，为什么会这样呢？我们打开开发者工具看一眼.我们几乎每天都会使用百度或者google去互联网获取各种知识或资源，不知道细心的你有没有发现有时候从百度或者google跳转到我们真正要看的网页时会奇慢，为什么会这样呢？我们打开开发者工具看一眼...
-                  <div class="essay-content-btn">阅读全文<i class="el-icon-d-arrow-right"></i></div>
-                </div>
-              </el-card>
-            </el-col>
-          </el-row>          
-          <!-- 分页模块 -->
-          <el-pagination
-          background
-          layout="prev, pager, next"
-          :total="10">
-        </el-pagination>
+        <div class="grid-content bg-purple content bg">
+          <router-view/>
         </div>
       </el-col>
 
@@ -97,109 +18,82 @@
         <div class="grid-content bg-purple aside">
           <div class="categeries bg">
               <span class="categeries-title"><i class="el-icon-s-flag"></i>文章分类</span>
-              <el-row class="categeries-list">
-                <div class="categeries-item" :span="2">
-                  <a href="#">
+              <el-row class="categeries-list" v-for="(categeroy,index) in categoryList" :key="index">
+                <div class="categeries-item" :span="2" @click="goTo(categeroy.title)">
+                  <a style="cursor: pointer;" >
                     <el-col :span="4" :offset="1">
-                      <span class="categeries-num" >1</span>
+                      <span class="categeries-num" >{{index+1}}</span>
                     </el-col>
                     <el-col class="categeries-text" :span="18">
-                      <p class="categeries-tip">js知识</p>
-                      <p class="categeries-info">前端编程的文章，比如Html、CSS、canvas、JavaScript、JQuery、Vue、微信小程序等。</p>
-                    </el-col>
-                  </a>
-                </div>
-              </el-row>
-              <el-row class="categeries-list">
-                <div class="categeries-item" :span="2">
-                  <a href="#">
-                    <el-col :span="4" :offset="1">
-                      <span class="categeries-num" >2</span>
-                    </el-col>
-                    <el-col class="categeries-text" :span="18">
-                      <p class="categeries-tip">Vue知识</p>
-                      <p class="categeries-info">前端编程的文章，比如Html、CSS、canvas、JavaScript、JQuery、Vue、微信小程序等。</p>
-                    </el-col>
-                  </a>
-                </div>
-              </el-row>
-              <el-row class="categeries-list">
-                <div class="categeries-item" :span="2">
-                  <a href="#">
-                    <el-col :span="4" :offset="1">
-                      <span class="categeries-num" >3</span>
-                    </el-col>
-                    <el-col class="categeries-text" :span="18">
-                      <p class="categeries-tip">node.js知识</p>
-                      <p class="categeries-info">前端编程的文章，比如Html、CSS、canvas、JavaScript、JQuery、Vue、微信小程序等。</p>
-                    </el-col>
-                  </a>
-                </div>
-              </el-row>
-              <el-row class="categeries-list">
-                <div class="categeries-item" :span="2">
-                  <a href="#">
-                    <el-col :span="4" :offset="1">
-                      <span class="categeries-num" >4</span>
-                    </el-col>
-                    <el-col class="categeries-text" :span="18">
-                      <p class="categeries-tip">日志</p>
-                      <p class="categeries-info">前端编程的文章，比如Html、CSS、canvas、JavaScript、JQuery、Vue、微信小程序等。</p>
-                    </el-col>
-                  </a>
-                </div>
-              </el-row>
-              <el-row class="categeries-list">
-                <div class="categeries-item" :span="2">
-                  <a href="#">
-                    <el-col :span="4" :offset="1">
-                      <span class="categeries-num" >5</span>
-                    </el-col>
-                    <el-col class="categeries-text" :span="18">
-                      <p class="categeries-tip">笔记</p>
-                      <p class="categeries-info">前端编程的文章，比如Html、CSS、canvas、JavaScript、JQuery、Vue、微信小程序等。</p>
-                    </el-col>
-                  </a>
-                </div>
-              </el-row>
-              <el-row class="categeries-list">
-                <div class="categeries-item" :span="2">
-                  <a href="#">
-                    <el-col :span="4" :offset="1">
-                      <span class="categeries-num" >6</span>
-                    </el-col>
-                    <el-col class="categeries-text" :span="18">
-                      <p class="categeries-tip">经典题</p>
-                      <p class="categeries-info">前端编程的文章，比如Html、CSS、canvas、JavaScript、JQuery、Vue、微信小程序等。</p>
+                      <p class="categeries-tip">{{categeroy.title}}</p>
+                      <p class="categeries-info">{{categeroy.info}}</p>
                     </el-col>
                   </a>
                 </div>
               </el-row>
           </div>
           <!-- 右侧最新文章 -->
-          <div class="sort bg">
-            <span class="categeries-title"><i class="el-icon-s-flag"></i>最新文章</span>
-               <el-row class="categeries-list">
-                <div class="categeries-item" :span="2">
+          <div class="sort bg essays5">
+            <span class="essays5-title"><i class="el-icon-s-flag"></i>最新文章</span>
+               <el-row class="essays5-list" v-for="(item,index) in  essays5" :key="index">
+                <div class="essays5-item" :span="2">
                   <a href="#">
-                    <el-col :span="4" :offset="1">
-                      <span class="categeries-num" >6</span>
+                    <el-col :span="3" :offset="2">
+                      <span class="essays5-num" >{{index+1}}</span>
                     </el-col>
-                    <el-col class="categeries-text" :span="18">
-                      <p class="categeries-tip">经典题</p>
-                      <p class="categeries-info">前端编程的文章，比如Html、CSS、canvas、JavaScript、JQuery、Vue、微信小程序等。</p>
+                    <el-col class="essays5-text" :span="18">
+                      <p class="essays5-tip">{{item.title}}</p>
                     </el-col>
                   </a>
                 </div>
               </el-row>
-              
           </div>
-          <!-- 右侧标签云 -->
-          <div class="tips bg">
-            <TagsCloud></TagsCloud>
+
+          <!-- 右侧最热文章 -->
+          <div class="sort bg hot5">
+            <span class="essays5-title"><i class="el-icon-s-flag"></i>最热文章</span>
+               <el-row class="essays5-list" v-for="(item,index) in  essays5" :key="index" >
+                <div class="essays5-item" :span="2" @click="readMore(`/essay/detail?id=${item._id}`)">
+                  <a href="#">
+                    <el-col :span="4" :offset="2">
+                      <span class="hot5-num" >TOP{{index+1}}</span>
+                    </el-col>
+                    <el-col class="essays5-text" :span="18">
+                      <p class="essays5-tip">{{item.title}}</p>
+                    </el-col>
+                  </a>
+                </div>
+              </el-row>
+          </div>
+
+          <!-- 右侧热词标签统计 -->
+          <div class="hot">
+            <el-card>
+             <div class="tag"><i class="el-icon-s-flag"></i>标签</div>
+              <el-badge :value="12" class="item">
+                <el-button size="small">node.js</el-button>
+              </el-badge>
+              <el-badge :value="12" class="item">
+                <el-button size="small">vue.js</el-button>
+              </el-badge>
+              <el-badge :value="12" class="item">
+                <el-button size="small">css</el-button>
+              </el-badge>
+              <el-badge :value="12" class="item">
+                <el-button size="small">评论</el-button>
+              </el-badge>
+              <el-badge :value="12" class="item">
+                <el-button size="small">面试题</el-button>
+              </el-badge>
+              <el-badge :value="12" class="item">
+                <el-button size="small">mongodb</el-button>
+              </el-badge>
+
+            </el-card>
           </div>
         </div>
       </el-col>
+      
     </el-row>
   </div>
 </template>
@@ -207,16 +101,65 @@
 <script>
 import Header from '../../components/Header/Header.vue'
 import Banner from '../../components/Banner/Banner.vue'
-import TagsCloud from '../../components/TagsCloud/TagsCloud.vue'
+import Footer from '../../components/Footer/Footer.vue'
+import { mapState } from 'vuex'
+import { getCategory,getEssay5 } from '../../api/index.js'
 export default {
   components:{
     Header,
     Banner,
-    TagsCloud
+    Footer
   },
    data() {
     return {
-      currentDate: new Date()
+      categoryList:[],
+      essays5:[]
+    }
+  },
+ async  mounted() {
+    //获取文章分类
+    this.getCategory()
+    //获取文章最新
+    this.getEssays5()
+    //获取文章详情页面
+    this.readMore()
+  },
+  computed:{
+  },
+  methods:{
+   //1.获取分类
+   async getCategory() {
+     const result = await getCategory()
+     if(result.code==200) {
+       this.categoryList = result.data
+       console.log(result.data)
+     }
+   },
+   //2.获取最新五篇文章
+   async getEssays5() {
+     const result = await getEssay5()
+     if(result.code==200) {
+       this.essays5 = result.data
+       console.log(result.data)
+     }
+   },
+   //3.跳转到对应路由
+   goTo(path) {
+     if(path=='前端') {
+       this.$router.push('/essay/web')
+     }else if(path=='笔记') {
+       this.$router.push('/essay/note')
+     } else if (path=='资源分享') {
+       this.$router.push('/essay/resource')
+     }else if(path=='bug集合') {
+        this.$router.push('/essay/bug')
+     }else if(path=="日志") {
+       this.$router.push('/essay/daily')
+     }
+   },
+    //4.获取文章详情页面
+    async readMore(path) {
+      this.$router.push(path)
     }
   }
 }
@@ -224,8 +167,7 @@ export default {
 
 <style lang="less" scoped>
  .bg {
-    background-color: rgba(255,255,255,.3);
-    box-shadow: 1px 2px 6px rgba(63,74,105,.16);
+    background-color: #fff;
     border-radius: 6px;
   }
 // container
@@ -239,113 +181,24 @@ export default {
     // border: 1px solid #000;
     height: 1000px;
   }
-  .time {
-    font-size: 13px;
-    color: #999;
-  }
-  
-  .bottom {
-    margin-top: 13px;
-    line-height: 12px;
-  }
 
-  .button {
-    padding: 0;
-    float: right;
-  }
-
-  .image {
-    width: 100%;
-    display: block;
-  }
-
-  .clearfix:before,
-  .clearfix:after {
-      display: table;
-      content: "";
-  }
-  
-  .clearfix:after {
-      clear: both
-  }
-  //content
-  .container-title {
-    width: 100%;
-    height: 80px;
-  }
-  .container-title span {
-      font-size: 14px;
-    }
-  .container-title-ratings,
-  .container-title-readings,
-  .container-title-categories {
-    margin-left: 15px;
-  }
-  .container-title-top {
-    font-size: 24px;
-    font-weight: 700;
-    color: #444;
-    line-height: 80px;
-    text-align: center;
-    }
-  .container-title-total {
-    margin-left: 140px; 
-  }
-  .essay {
-    margin-top: 20px;
-  }
-  .essay-head .essay-head-title{
-    font-size: 20px;
-    font-weight: 700;
-    color: #444;
-    text-align: center;
-  }
-  .essay-head-tips {
-    text-align: center;
-    margin-top: 15px;
-    margin-bottom:15px; 
-    span {
-      margin-left: 10px; 
-    }
-  }
-  .essay-content {
-    font-size: 14px;
-    color: #444;
-    line-height: 1.9!important;
-  }
-  .essay-content-btn {
-    width: 80px;
-    height: 25px;
-    background-color: #97E09C;
-    border-radius: 20px;
-    font-size: 11px;
-    color: #fff;
-    text-align: center;
-    margin-left: 270px;
-    cursor: pointer;
-    transition: all .3s ease-in;
-  }
-  .essay-content-btn:hover {
-     background: #48456D;
-      
-  }
-
-  // 分页模块
-  .el-pagination {
-    margin-left: 270px;
-    margin-top: 20px;
-  }
 
 // 右侧aside
-  //categeries
-.categeries {
-  // background: #fff;
-  height: 400px;
+.categeries,
+.essays5,
+.hot5 {
+  height: 350px;
 }
-.categeries-item a {
+.hot {
+  margin-top: 10px;
+}
+
+.categeries-item a,
+.essays5-item a {
   display: block;
 }
-.categeries-title {
+.categeries-title,
+.essays5-title {
   display: block;
   font-size: 16px;
   color: #000;
@@ -359,19 +212,25 @@ export default {
 .el-icon-s-flag {
   color: orange;
 }
-.categeries-list {
+.categeries-list,
+.essays5-list {
   margin-top: 10px;
   margin: 20px 0 20px 0;
   cursor: pointer;
 }
-.categeries-tip {
+.categeries-tip,
+.essays5-tip {
   font-size: 14px;
   color: #000; 
 }
 .categeries-tip:hover {
   color:blue;
 }
-.categeries-info {
+.essays5-tip:hover {
+  color:blue;
+}
+.categeries-info,
+.essays5-info {
   font-size: 12px;
   color: #656565;
 }
@@ -384,19 +243,41 @@ export default {
   line-height: 35px; 
   border-radius:23px;
   color: #8d7bf2;
+  font-weight: 700;
   // margin-right: 10px; 
 }
 .categeries-num:hover + .categeries-tip {
   color:blue;
 }
-.categeries-info {
+.essays5:hover + .essays5 {
+  color:blue;
+}
+.categeries-info,
+.essays5-info {
   overflow:hidden;
   text-overflow:ellipsis;
   white-space:nowrap;
 }
-
+.essays5-num {
+  font-weight: bold;
+  font-style: italic;
+  color: #8d7bf2;
+}
+.hot5-num {
+  font-weight: bold;
+  font-style: italic;
+  color: #8d7bf2;
+  font-size: 13px;
+}
  //sort
-
+.item {
+  margin-top: 10px;
+  margin-right: 40px;
+}
+.tag {
+border-bottom: 1px solid #ccc;
+padding-bottom: 5px;
+}
 </style>
 
 

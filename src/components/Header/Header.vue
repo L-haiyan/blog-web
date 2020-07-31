@@ -4,7 +4,9 @@
       <div class="header">
         <el-row :gutter="320">
           <el-col :span="10">
-            <div class="grid-content bg-purple left">越努力，越幸运</div>
+            <div class="grid-content bg-purple left">
+              <el-image src="../../assets/logo.jpg"></el-image>
+              越努力，越幸运</div>
           </el-col>
           <el-col :span="14">
             <div class="grid-content bg-purple right">

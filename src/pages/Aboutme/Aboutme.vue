@@ -61,10 +61,6 @@
               </div>
               <div>
                 <em>&nbsp&nbsp您可以直接点击以下图标跳转:</em><br/>
-                <!-- <svg class="icon bb" aria-hidden="true"> <use xlink:href="#icon-QQ"></use> </svg>
-                <svg class="icon" aria-hidden="true"> <use xlink:href="#icon-youjian"></use> </svg>
-                <svg class="icon" aria-hidden="true"> <use xlink:href="#icon-github"></use> </svg>
-                <svg class="icon" aria-hidden="true"> <use xlink:href="#icon-csdn"></use> </svg> -->
                 <div class="iconlist top">
                   <a target="_blank" title="点击QQ联系我 1094123797" onclick="window.open('tencent://message/?uin=1094123797&&Site=&Menu-=yes')" rel="external nofollow"><svg class="icon bd" aria-hidden="true"> <use xlink:href="#icon-QQ"></use> </svg></a>
                   <a href="mailto:1094123797@qq.com" title="点击邮箱联系我 1094123797@qq.com"><svg class="icon bd" aria-hidden="true"> <use xlink:href="#icon-youjian"></use> </svg></a>
@@ -96,16 +92,19 @@
         </el-row>
       </el-col>
     </el-row>
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
 import Header from '../../components/Header/Header.vue'
 import Banner from '../../components/Banner/Banner.vue'
+import Footer from '../../components/Footer/Footer.vue'
 export default {
   components:{
     Header,
-    Banner
+    Banner,
+    Footer
   },
     methods:{
    
