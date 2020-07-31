@@ -16,7 +16,7 @@
     "element-ui": "^2.13.2",
     "emoji-vue": "^0.2.4",
     "highlight.js": "^10.1.2",
-    "jquery": "^2.2.3",
+    "jquery": "^3.5.0",
     "less": "^3.11.3",
     "less-loader": "^4.1.0",
     "marked": "^1.1.1",
